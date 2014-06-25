@@ -41,6 +41,12 @@ public class Store {
 	public Store() {
 	}
 
+	public Store(Address address, Staff manager){
+		this.manager = manager;
+		this.address = address;
+		this.lastUpdate = new Date();
+	}
+	
 	public Store(long id, Set<Inventory> invetnories, Address address, Set<Staff> staffMembers, Set<Customer> customers, Staff manager) {
 		this.id = id;
 		this.inventories = invetnories;

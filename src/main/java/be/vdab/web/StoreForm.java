@@ -1,6 +1,7 @@
 package be.vdab.web;
 
-import com.sun.istack.NotNull;
+
+import javax.validation.constraints.NotNull;
 
 import be.vdab.entities.Address;
 import be.vdab.entities.Staff;
@@ -10,6 +11,7 @@ public class StoreForm {
 	private Staff staff;
 	@NotNull
 	private Address address;
+	
 	public Staff getStaff() {
 		return staff;
 	}

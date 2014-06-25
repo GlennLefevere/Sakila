@@ -20,4 +20,9 @@ public class StoreServiceImpl implements StoreService{
 		storeDAO.save(store);
 	}
 
+	@Override
+	public Iterable<Store> findAll() {
+		return storeDAO.findAll();
+	}
+
 }
