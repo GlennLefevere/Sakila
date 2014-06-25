@@ -11,8 +11,11 @@
 <body>
 <v:menu/>
 <h1>Voeg een nieuwe store toe</h1>
-<form:form>
-
+<form:form commandName="storeForm">
+<form:label path="staff">Kies een manager: <form:errors path="staff" cssClass="fout"/></form:label>
+<form:select path="staff" items="${staffs}" itemValue="id" itemLabel="naam"/>
+<form:label path="address">Kies een manager: <form:errors path="address" cssClass="fout"/></form:label>
+<form:select path="address" items="${addresses}" itemValue="id" itemLabel="addresses"/>
 </form:form>
 </body>
 </html>

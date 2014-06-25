@@ -144,6 +144,10 @@ public class Staff {
 	public Set<Store> getStores() {
 		return stores;
 	}
+	
+	public String getNaam(){
+		return firstName + " " + lastName;
+	}
 
 	@Override
 	public int hashCode() {
