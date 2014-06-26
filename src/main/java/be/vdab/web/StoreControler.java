@@ -36,6 +36,20 @@ public class StoreControler {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/toevoegen")
 	ModelAndView view() {
+		return createModelAndView().addObject(new StoreForm());
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/toevoegen")
+	ModelAndView create(@Valid StoreForm storeForm, BindingResult bindingResult) {
+		if (!bindingResult.hasErrors()) {
+			storeService.create(new Store(storeForm.getAddress(), storeForm.getStaff()));
+			return new ModelAndView(REDIRECT_STORES);
+		}
+		return createModelAndView();
+	}
+
+	private ModelAndView createModelAndView() {
+		ModelAndView modelAndView = new ModelAndView(NIEUWE_STORE_VIEW);
 		List<Store> stores = (List<Store>) storeService.findAll();
 		List<Long> managerIds = new ArrayList<>();
 		List<Long> addressIds = new ArrayList<>();
@@ -43,24 +57,14 @@ public class StoreControler {
 			addressIds.add(store.getAddress().getId());
 			managerIds.add(store.getManager().getId());
 		}
-		return new ModelAndView(NIEUWE_STORE_VIEW).addObject("staffs",staffService.findByIdIn(managerIds)).addObject("addresses", addressService.findByIdNotIn(addressIds)).addObject(new StoreForm());
-	}
-	
-	@RequestMapping(method = RequestMethod.POST, value = "/toevoegen")
-	ModelAndView create(@Valid StoreForm storeForm, BindingResult bindingResult){
-		if(!bindingResult.hasErrors()){
-			storeService.create(new Store(storeForm.getAddress(), storeForm.getStaff()));
-			return new ModelAndView(REDIRECT_STORES);
-		}
-		ModelAndView modelAndView = new ModelAndView(NIEUWE_STORE_VIEW);
-		modelAndView.addObject(storeForm);
-		//modelAndView.addObject("staffs",staffService.findAll());
-		modelAndView.addObject("addresses",addressService.findAll());
+		modelAndView.addObject("staffs", staffService.findByIdNotIn(managerIds));
+		modelAndView.addObject("addresses", addressService.findByIdNotIn(addressIds));
 		return modelAndView;
+
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, value = "/stores")
-	ModelAndView stores(){
-		return new ModelAndView(STORES_VIEW).addObject("stores",storeService.findAll());
+	ModelAndView stores() {
+		return new ModelAndView(STORES_VIEW).addObject("stores", storeService.findAll());
 	}
 }

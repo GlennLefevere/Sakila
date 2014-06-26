@@ -36,27 +36,25 @@ public class StaffControler {
 	
 	@RequestMapping(method = RequestMethod.GET, value="toevoegen")
 	ModelAndView view(){
-		List<Store> stores = (List<Store>) storeService.findAll();
-		List<Long> addressIds = new ArrayList<>();
-		for (Store store : stores) {
-			addressIds.add(store.getAddress().getId());
-		}
-		return new ModelAndView(STAFF_TOEVOEGEN_VIEW).addObject("addresses", addressService.findByIdNotIn(addressIds)).addObject("stores", stores).addObject(new StaffForm());
+		return addressIdsNaarList().addObject(new StaffForm());
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "toevoegen")
 	ModelAndView create(@Valid StaffForm staffForm, BindingResult bindingResult){
-		if(!bindingResult.hasErrors() && staffForm.isValid()){
+		if(!bindingResult.hasErrors()){
 			staffService.create(new Staff( staffForm.getFirstName(), staffForm.getLastName(), staffForm.getAddress(), staffForm.getEmail(), staffForm.getStore(), staffForm.getUsername(), staffForm.getPassword()));
 			return new ModelAndView(REDIRECT_NA_TOEVOEGEN);
 		}
-		bindingResult.reject("repeat", "paswoord en herhaal zijn niet gelijk");
+		return addressIdsNaarList();
+	}
+
+	private ModelAndView addressIdsNaarList() {
 		List<Store> stores = (List<Store>) storeService.findAll();
 		List<Long> addressIds = new ArrayList<>();
 		for (Store store : stores) {
 			addressIds.add(store.getAddress().getId());
 		}
-		return new ModelAndView(STAFF_TOEVOEGEN_VIEW).addObject("addresses", addressService.findByIdNotIn(addressIds)).addObject("stores", stores).addObject(staffForm);
+		return new ModelAndView(STAFF_TOEVOEGEN_VIEW).addObject("addresses", addressService.findByIdNotIn(addressIds)).addObject("stores", stores);
 	}
 
 }

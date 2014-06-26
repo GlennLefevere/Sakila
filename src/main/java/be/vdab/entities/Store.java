@@ -104,7 +104,7 @@ public class Store {
 	}
 
 	public String getNaam(){
-		return address.getAddresses();
+		return address.getAddresses() + " - " + manager.getNaam() ;
 	}
 
 }

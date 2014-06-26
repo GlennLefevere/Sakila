@@ -9,7 +9,9 @@
 <v:head title="stores"/>
 </head>
 <body>
+<div id="container">
 <v:menu/>
+<h1>Stores</h1>
 <a href='<c:url value="/stores/toevoegen"/>'>Store toevoegen</a>
 <table>
 <tr>
@@ -23,5 +25,6 @@
 </tr>
 </c:forEach>
 </table>
+</div>
 </body>
 </html>

@@ -9,8 +9,9 @@
 <v:head title="staff toevoegen"/>
 </head>
 <body>
+<div id="container">
 <v:menu/>
-<h1>Voeg eeb staff member toe</h1>
+<h1>Voeg een staff member toe</h1>
 <spring:url value="/staffs/toevoegen" var="url"/>
 <form:form commandName="staffForm" method="post" action="${url}">
 <form:label path="firstName">Voornaam: <form:errors path="firstName" cssClass="fout"/></form:label>
@@ -32,5 +33,6 @@
 <form:password path="repeat"/>
 <input type="submit" value="Toevoegen">
 </form:form>
+</div>
 </body>
 </html>

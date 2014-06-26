@@ -9,6 +9,7 @@
 <v:head title="Film op titel"></v:head>
 </head>
 <body>
+<div id="container">
 	<v:menu />
 	<h1>Films op naam</h1>
 	<c:url value="/films/optitel" var="url" />
@@ -38,5 +39,6 @@
 			</c:forEach>
 		</table>
 	</c:if>
+	</div>
 </body>
 </html>

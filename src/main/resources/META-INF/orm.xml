@@ -7,6 +7,6 @@ http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd" version="2.1">
 <query>select f from Film f join fetch f.filmActors as fa join fetch fa.actor where f.id = :id</query>
 </named-query>
 <named-query name="Store.findAllWithAddress">
-<query>select s from Store s join fetch s.address</query>
+<query>select s from Store s join fetch s.address as a join fetch s.manager</query>
 </named-query>
 </entity-mappings>

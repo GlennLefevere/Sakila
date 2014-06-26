@@ -23,7 +23,7 @@ public class StaffServiceImpl implements StaffService{
 	}
 
 	@Override
-	public Iterable<Staff> findByIdIn(List<Long> ids) {
+	public Iterable<Staff> findByIdNotIn(List<Long> ids) {
 		return staffDAO.findByIdNotIn(ids);
 	}
 

@@ -58,7 +58,7 @@ public class FilmControler {
 	ModelAndView findActeurs(@PathVariable Film film , @Valid ActeurNaam acteurNaam, BindingResult bindingResult){
 		ModelAndView modelAndView = new ModelAndView(FILM_VIEW).addObject(film);
 		if (!bindingResult.hasErrors()) {
-			modelAndView.addObject("acteurs", actorService.findByLastNameStartingWith(acteurNaam.getNaamdeel())).addObject(acteurNaam).addObject(new ActorForm());
+			return modelAndViewMethod(film, acteurNaam).addObject(acteurNaam).addObject(new ActorForm());
 		}
 		return modelAndView;
 	}
@@ -71,10 +71,15 @@ public class FilmControler {
 			redirectAttributes.addAttribute("id", film.getId());
 			return new ModelAndView(REDIRECT_NA_TOEVOEGEN);			
 		}
-		ModelAndView modelAndView = new ModelAndView(FILM_VIEW);
-		modelAndView.addObject(film);
+
 		ActeurNaam acteurNaam=new ActeurNaam();
 		acteurNaam.setNaamdeel(naamdeel);
+		return modelAndViewMethod(film, acteurNaam);
+	}
+
+	private ModelAndView modelAndViewMethod(Film film, ActeurNaam acteurNaam) {
+		ModelAndView modelAndView = new ModelAndView(FILM_VIEW);
+		modelAndView.addObject(film);
 		modelAndView.addObject(acteurNaam);
 		modelAndView.addObject("acteurs", actorService.findByLastNameStartingWith(acteurNaam.getNaamdeel()));
 		return modelAndView;

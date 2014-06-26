@@ -1,3 +1,94 @@
-.number{
+.number {
 	float: right;
+}
+
+body {
+	background-color: #CCCCCC;
+	width: 100%;
+}
+
+nav ul li {
+	list-style-type: none;
+	float: left;
+	width: 33%;
+	height: 2em;
+	background-color: #2BACB5;
+}
+
+nav ul li>a {
+	text-align: center;
+	width: 100%;
+	margin: 0.3em auto 0 auto;
+	color: white;
+	text-decoration: none;
+}
+
+nav ul li>a:hover {
+	text-decoration: underline;
+}
+
+nav ul {
+	float: left;
+	background-color: #2BACB5;
+	width: 100%;
+	margin: 0;
+}
+
+nav {
+	float: left;
+	margin : 0;
+	width: 100%;
+}
+
+h1 {
+	float: left;
+	clear: left;
+}
+
+form {
+	float: left;
+	clear: left;
+}
+
+form>input,form>label,form>select {
+	float: left;
+	clear: left;
+}
+
+table {
+	float: left;
+	clear: left;
+}
+
+tr:first-child {
+	font-weight: bold;
+}
+
+tr:nth-child(odd) {
+	background-color: white;
+}
+
+tr:hover {
+	color: white;
+	background-color: #2BACB5;
+}
+
+a {
+	float: left;
+	clear: left;
+}
+
+#container {
+	width: 80%;
+	margin: 0 auto;
+}
+.fout{
+	background-color: red;
+	color: white;
+	border: 1px solid white;
+	padding: 5px;
+}
+ul{
+	float: left;
+	clear: left;
 }

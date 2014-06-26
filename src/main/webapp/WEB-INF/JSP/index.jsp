@@ -7,7 +7,9 @@
 <v:head title="Home"/>
 </head>
 <body>
+<div id="container">
 <v:menu/>
 <h1>De juiste pagina</h1>
+</div>
 </body>
 </html>

@@ -19,11 +19,6 @@ import javax.persistence.TemporalType;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.sun.istack.NotNull;
-
-import be.vdab.entities.Payment;
-import be.vdab.entities.Store;
-
 @Entity
 @Table(name = "staff")
 public class Staff {
@@ -31,11 +26,9 @@ public class Staff {
 	@GeneratedValue
 	@Column(name = "staff_id")
 	private long id;
-	@NotNull
 	@NotBlank
 	@Column(name = "first_name")
 	private String firstName;
-	@NotNull
 	@NotBlank
 	@Column(name = "last_name")
 	private String lastName;
@@ -44,7 +37,6 @@ public class Staff {
 	private Address address;
 	@Lob
 	private byte[] picture;
-	@NotNull
 	@NotBlank
 	@Email
 	private String email;
@@ -52,10 +44,8 @@ public class Staff {
 	@JoinColumn(name = "store_id")
 	private Store store;
 	private int active;
-	@NotNull
 	@NotBlank
 	private String username;
-	@NotNull
 	@NotBlank
 	private String password;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -140,6 +130,62 @@ public class Staff {
 
 	public String getNaam() {
 		return firstName + " " + lastName;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public void setPicture(byte[] picture) {
+		this.picture = picture;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
+	}
+
+	public void setActive(int active) {
+		this.active = active;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setLastUpdate(Date lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
+
+	public void setPayments(Set<Payment> payments) {
+		this.payments = payments;
+	}
+
+	public void setRentals(Set<Rental> rentals) {
+		this.rentals = rentals;
+	}
+
+	public void setStores(Set<Store> stores) {
+		this.stores = stores;
 	}
 
 	@Override

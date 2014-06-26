@@ -9,6 +9,8 @@
 <v:head title="${film.title}"/>
 </head>
 <body>
+<div id="container">
+<v:menu/>
 <h1>${film.title}</h1>
 <c:if test="${not empty film.filmActors }">
 <ul>
@@ -37,5 +39,6 @@
 <input type="submit" value="Voeg toe">
 </form:form>
 </c:if>
+</div>
 </body>
 </html>
