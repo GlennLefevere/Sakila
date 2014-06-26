@@ -24,7 +24,6 @@ import com.sun.istack.NotNull;
 import be.vdab.entities.Payment;
 import be.vdab.entities.Store;
 
-
 @Entity
 @Table(name = "staff")
 public class Staff {
@@ -34,11 +33,11 @@ public class Staff {
 	private long id;
 	@NotNull
 	@NotBlank
-	@Column(name="first_name")
+	@Column(name = "first_name")
 	private String firstName;
 	@NotNull
 	@NotBlank
-	@Column(name="last_name")
+	@Column(name = "last_name")
 	private String lastName;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "address_id")
@@ -62,31 +61,25 @@ public class Staff {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "last_update")
 	private Date lastUpdate;
-	@OneToMany(mappedBy="staff")
+	@OneToMany(mappedBy = "staff")
 	private Set<Payment> payments;
-	@OneToMany(mappedBy="staff")
+	@OneToMany(mappedBy = "staff")
 	private Set<Rental> rentals;
-	@OneToMany(mappedBy="manager")
+	@OneToMany(mappedBy = "manager")
 	private Set<Store> stores;
-	
+
 	public Staff() {
 	}
 
-	public Staff(long id, String firstName, String lastName, Address address, byte[] picture, String email, Store store, int active, String username, String password, Date lastUpdate, Set<Payment> payments, Set<Rental> rentals, Set<Store> stores) {
-		this.id = id;
+	public Staff(String firstName, String lastName, Address address, String email, Store store, String username, String password) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
-		this.picture = picture;
 		this.email = email;
 		this.store = store;
-		this.active = active;
 		this.username = username;
 		this.password = password;
-		this.lastUpdate = lastUpdate;
-		this.payments = payments;
-		this.rentals = rentals;
-		this.stores = stores;
+		this.lastUpdate = new Date();
 	}
 
 	public long getId() {
@@ -144,8 +137,8 @@ public class Staff {
 	public Set<Store> getStores() {
 		return stores;
 	}
-	
-	public String getNaam(){
+
+	public String getNaam() {
 		return firstName + " " + lastName;
 	}
 
@@ -153,7 +146,6 @@ public class Staff {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.toLowerCase().hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.toLowerCase().hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.toLowerCase().hashCode());
@@ -171,11 +163,6 @@ public class Staff {
 		if (getClass() != obj.getClass())
 			return false;
 		Staff other = (Staff) obj;
-		if (address == null) {
-			if (other.address != null)
-				return false;
-		} else if (!address.equals(other.address))
-			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
@@ -203,5 +190,5 @@ public class Staff {
 			return false;
 		return true;
 	}
-	
+
 }

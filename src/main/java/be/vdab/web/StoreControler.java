@@ -1,5 +1,8 @@
 package be.vdab.web;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +36,14 @@ public class StoreControler {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/toevoegen")
 	ModelAndView view() {
-		return new ModelAndView(NIEUWE_STORE_VIEW).addObject("staffs",staffService.findAll()).addObject("addresses",addressService.findAll()).addObject(new StoreForm());
+		List<Store> stores = (List<Store>) storeService.findAll();
+		List<Long> managerIds = new ArrayList<>();
+		List<Long> addressIds = new ArrayList<>();
+		for (Store store : stores) {
+			addressIds.add(store.getAddress().getId());
+			managerIds.add(store.getManager().getId());
+		}
+		return new ModelAndView(NIEUWE_STORE_VIEW).addObject("staffs",staffService.findByIdIn(managerIds)).addObject("addresses", addressService.findByIdNotIn(addressIds)).addObject(new StoreForm());
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/toevoegen")
@@ -44,7 +54,7 @@ public class StoreControler {
 		}
 		ModelAndView modelAndView = new ModelAndView(NIEUWE_STORE_VIEW);
 		modelAndView.addObject(storeForm);
-		modelAndView.addObject("staffs",staffService.findAll());
+		//modelAndView.addObject("staffs",staffService.findAll());
 		modelAndView.addObject("addresses",addressService.findAll());
 		return modelAndView;
 	}

@@ -10,6 +10,7 @@
 </head>
 <body>
 <v:menu/>
+<a href='<c:url value="/stores/toevoegen"/>'>Store toevoegen</a>
 <table>
 <tr>
 <td>Address</td>

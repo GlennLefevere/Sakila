@@ -98,9 +98,7 @@ public class Address {
 		int result = 1;
 		result = prime * result + ((address == null) ? 0 : address.toLowerCase().hashCode());
 		result = prime * result + ((adresstwee == null) ? 0 : adresstwee.toLowerCase().hashCode());
-		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + ((district == null) ? 0 : district.toLowerCase().hashCode());
-		result = prime * result + ((lastUpdate == null) ? 0 : lastUpdate.hashCode());
 		result = prime * result + ((phone == null) ? 0 : phone.toLowerCase().hashCode());
 		result = prime * result + ((postalCode == null) ? 0 : postalCode.toLowerCase().hashCode());
 		return result;
@@ -125,20 +123,10 @@ public class Address {
 				return false;
 		} else if (!adresstwee.equalsIgnoreCase(other.adresstwee))
 			return false;
-		if (city == null) {
-			if (other.city != null)
-				return false;
-		} else if (!city.equals(other.city))
-			return false;
 		if (district == null) {
 			if (other.district != null)
 				return false;
 		} else if (!district.equalsIgnoreCase(other.district))
-			return false;
-		if (lastUpdate == null) {
-			if (other.lastUpdate != null)
-				return false;
-		} else if (!lastUpdate.equals(other.lastUpdate))
 			return false;
 		if (phone == null) {
 			if (other.phone != null)

@@ -4,6 +4,8 @@
 <nav>
 	<ul>
 	<li><a href="<c:url value='/films/optitel'/>">Films zoeken op titel</a></li>
+	<li><a href="<c:url value='/stores/stores'/>">Stores</a></li>
+	<li><a href="<c:url value='/staffs/toevoegen'/>">Niewe staff toevoegen</a></li>
 		<%--<li><a href="<c:url value='/filialen'/>">Filialen</a></li>
 		<security:authorize url='/filialen/toevoegen'>
 			<li><a href="<c:url value='/filialen/toevoegen'/>">Filiaal toevoegen</a></li>

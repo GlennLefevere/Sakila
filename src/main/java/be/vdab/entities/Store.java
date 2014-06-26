@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 @Entity
 @Table(name = "store")
 public class Store {
@@ -24,14 +25,14 @@ public class Store {
 	private long id;
 	@OneToMany(mappedBy="store")
 	private Set<Inventory> inventories;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "address_id")
 	private Address address;
 	@OneToMany(mappedBy="store")
 	private Set<Staff> staffMembers;
 	@OneToMany(mappedBy="store")
 	private Set<Customer> customers;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "manager_staff_id")
 	private Staff manager;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -79,12 +80,12 @@ public class Store {
 	public Staff getManager() {
 		return manager;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((address == null) ? 0 :(int) address.getId());
+		result = prime * result + (int) (id ^ (id >>> 32));
 		return result;
 	}
 
@@ -97,12 +98,13 @@ public class Store {
 		if (getClass() != obj.getClass())
 			return false;
 		Store other = (Store) obj;
-		if (address == null) {
-			if (other.address != null)
-				return false;
-		} else if (!address.equals(other.address))
+		if (id != other.id)
 			return false;
 		return true;
+	}
+
+	public String getNaam(){
+		return address.getAddresses();
 	}
 
 }

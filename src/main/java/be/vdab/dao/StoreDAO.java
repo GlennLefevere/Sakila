@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import be.vdab.entities.Store;
 
 public interface StoreDAO extends JpaRepository<Store, Long> {
-
+	public Iterable<Store> findAllWithAddress();
 }

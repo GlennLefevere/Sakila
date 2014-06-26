@@ -22,7 +22,7 @@ public class StoreServiceImpl implements StoreService{
 
 	@Override
 	public Iterable<Store> findAll() {
-		return storeDAO.findAll();
+		return storeDAO.findAllWithAddress();
 	}
 
 }

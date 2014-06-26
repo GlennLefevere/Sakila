@@ -1,5 +1,7 @@
 package be.vdab.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,11 @@ public class AddressServiceImpl implements AddressService{
 	@Override
 	public Iterable<Address> findAll() {
 		return addressDAO.findAll();
+	}
+
+	@Override
+	public Iterable<Address> findByIdNotIn(List<Long> ids) {
+		return addressDAO.findByIdNotIn(ids);
 	}
 
 }

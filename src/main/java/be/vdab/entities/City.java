@@ -71,7 +71,7 @@ public class City {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((city == null) ? 0 : city.toLowerCase().hashCode());
-		result = prime * result + ((country == null) ? 0 : country.hashCode());
+		//result = prime * result + ((country == null) ? 0 : country.hashCode());
 		result = prime * result + ((lastUpdate == null) ? 0 : lastUpdate.hashCode());
 		return result;
 	}

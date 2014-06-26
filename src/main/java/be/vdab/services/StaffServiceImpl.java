@@ -1,5 +1,7 @@
 package be.vdab.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,16 @@ public class StaffServiceImpl implements StaffService{
 	@Override
 	public Iterable<Staff> findAll() {
 		return staffDAO.findAll();
+	}
+
+	@Override
+	public Iterable<Staff> findByIdIn(List<Long> ids) {
+		return staffDAO.findByIdNotIn(ids);
+	}
+
+	@Override
+	public void create(Staff staff) {
+		staffDAO.save(staff);
 	}
 
 }
