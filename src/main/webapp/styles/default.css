@@ -92,3 +92,10 @@ ul{
 	float: left;
 	clear: left;
 }
+.pages{
+	float:left;
+	clear: left;
+}
+.pages a{
+	float: none;
+}

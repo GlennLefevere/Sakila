@@ -3,6 +3,7 @@ package be.vdab.web;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,10 +42,10 @@ public class FilmControler {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, params = {"titel"}, value = "optitel")
-	ModelAndView testje(@Valid FilmTitel filmTitel, BindingResult bindingResult){
+	ModelAndView testje(@Valid FilmTitel filmTitel, BindingResult bindingResult, Pageable pageable, @RequestParam(value = "sort", required = false) String sort){
 		ModelAndView modelAndView = new ModelAndView(OPTITEL_VIEW);
 		if (!bindingResult.hasErrors()) {
-			modelAndView.addObject("films", filmService.findByStukNaam(filmTitel.getTitel()));
+			modelAndView.addObject("page", filmService.findByStukNaam(filmTitel.getTitel(), pageable)).addObject("sort", sort);
 		}
 		return modelAndView;
 	}
