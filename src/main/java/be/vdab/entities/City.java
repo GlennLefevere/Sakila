@@ -17,8 +17,6 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.sun.istack.NotNull;
-
 @Entity
 @Table(name = "city")
 public class City {
@@ -27,7 +25,6 @@ public class City {
 	@Column(name = "city_id")
 	private long id;
 	@NotBlank
-	@NotNull
 	private String city;
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "last_update")

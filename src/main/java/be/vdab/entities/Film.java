@@ -22,8 +22,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
 
-import com.sun.istack.NotNull;
-
 @Entity
 @Table(name = "film")
 public class Film {
@@ -31,10 +29,8 @@ public class Film {
 	@GeneratedValue
 	@Column(name = "film_id")
 	private long id;
-	@NotNull
 	@NotBlank
 	private String title;
-	@NotNull
 	@NotBlank
 	private String description;
 	@DateTimeFormat(pattern = "yyyy")

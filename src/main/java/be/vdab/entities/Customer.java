@@ -19,10 +19,6 @@ import javax.persistence.TemporalType;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.sun.istack.NotNull;
-
-import be.vdab.entities.Payment;
-
 @Entity
 @Table(name = "customer")
 public class Customer {
@@ -30,11 +26,9 @@ public class Customer {
 	@GeneratedValue
 	@Column(name = "customer_id")
 	private long id;
-	@NotNull
 	@NotBlank
 	@Column(name = "first_name")
 	private String firstName;
-	@NotNull
 	@NotBlank
 	@Column(name = "last_name")
 	private String lastName;

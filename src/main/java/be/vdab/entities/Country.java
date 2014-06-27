@@ -15,8 +15,6 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.sun.istack.NotNull;
-
 @Entity
 @Table(name = "country")
 public class Country {
@@ -24,7 +22,6 @@ public class Country {
 	@GeneratedValue
 	@Column(name = "country_id")
 	private long id;
-	@NotNull
 	@NotBlank
 	private String country;
 	@OneToMany(mappedBy = "country")
